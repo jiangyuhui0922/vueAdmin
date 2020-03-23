@@ -7,7 +7,8 @@ export const constantRoutes = [
   {
     path: '/login',
     component: () => import('@/views/login/index'),
-    hidden: true
+    hidden: true,
+    meta: { title: '登陆' }
   }, {
     path: '/404',
     component: () => import('@/views/404'),
@@ -17,12 +18,16 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/dashboard',
     children: [{
-      path: 'dashboard',
+      path: '',
       name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      component: () => import('@/views/index/index'),
+      meta: { title: '首页', icon: 'dashboard' }
     }]
-  }, { path: '*', redirect: '/404', hidden: true }
+  }, {
+    path: '*',
+    redirect: '/404',
+    hidden: true
+  }
 ]
 const createRouter = () => new Router({
   scrollBehavior: () => ({ y: 0 }),
